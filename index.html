@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Милешеньки ❤️</title>
+    <style>
+        body { margin: 0; background-color: #fff0f5; font-family: sans-serif; color: #ff1493; overflow-x: hidden; text-align: center; }
+        .section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .chibi { width: 280px; animation: float 3s ease-in-out infinite; z-index: 10; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+        .counter-box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 20px rgba(255, 182, 193, 0.5); margin: 20px; z-index: 10; }
+        .heart { position: fixed; color: #ffb6c1; pointer-events: none; animation: fall linear infinite; z-index: 1; }
+        @keyframes fall { to { transform: translateY(110vh); } }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <img src="чиби.png" alt="Мила" class="chibi">
+        <div class="counter-box">
+            <h1>Для любимой Милешеньки</h1>
+            <div id="counter" style="font-size: 1.5rem; font-weight: bold;">Считаем...</div>
+        </div>
+    </div>
+    <script>
+        const startDate = new Date('2024-01-01'); // ЗАМЕНИ ТУТ ДАТУ (Год-Месяц-День)
+        function update() {
+            const diff = new Date() - startDate;
+            document.getElementById('counter').innerText = `Мы вместе уже ${Math.floor(diff / 86400000)} дней!`;
+        }
+        setInterval(() => {
+            const h = document.createElement('div');
+            h.className = 'heart'; h.innerHTML = '❤️';
+            h.style.left = Math.random() * 100 + 'vw'; h.style.top = '-20px';
+            h.style.fontSize = Math.random() * 20 + 10 + 'px';
+            h.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 5000);
+        }, 300);
+        update(); setInterval(update, 1000);
+    </script>
+</body>
+</html>
