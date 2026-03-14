@@ -8,7 +8,7 @@
     <style>
         body { margin: 0; padding: 0; background-color: #ffffff; font-family: sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* ЭКРАН 1: ЦВЕТОК И ОВАЛЬНОЕ ОБЛАКО */
+        /* ЭКРАН 1: ЦВЕТОК И АККУРАТНОЕ ОБЛАКО */
         .section-one {
             height: 100vh; display: flex; justify-content: center; align-items: center;
             position: relative; background: linear-gradient(to bottom, #e0f2f1, #ffffff);
@@ -19,20 +19,23 @@
         }
         @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
         
+        /* Исправленная плашка: теперь это красивое облачко, а не овал */
         .cloud {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: rgba(255, 255, 255, 0.95); 
-            width: 320px; /* Жестко задаем ширину */
-            padding: 40px 10px; 
-            border-radius: 50%; /* Делает идеальный горизонтальный овал */
+            padding: 35px 45px; /* Аккуратные отступы */
+            border-radius: 80px; /* Делает форму мягкой капсулой */
             box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; 
             border: 4px solid #fff; z-index: 10;
         }
-        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1.2rem; white-space: nowrap; }
+        .cloud h2 { 
+            font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; 
+            font-size: 1.2rem; white-space: nowrap; /* Запрещаем тексту переноситься */
+        }
         .cloud #counter { font-size: 2.8rem; font-weight: bold; color: #333; margin: 5px 0; }
         .cloud p { color: #888; font-size: 0.9rem; margin: 0; }
 
-        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (без изменений) */
+        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (оно идеально, не трогаем) */
         .section-two { 
             height: 100vh; background: #1a002b; 
             display: flex; justify-content: center; align-items: center; position: relative;
@@ -42,7 +45,7 @@
         /* ЭКРАН 3: ЦИТАТА И РЕЧКА */
         .section-three { padding: 100px 20px; text-align: center; background: #fff; }
         .quote { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: #555; max-width: 400px; margin: 0 auto; line-height: 1.5; }
-        .jap-text { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; color: #ff69b4; margin-top: 15px; } /* Японский текст */
+        .jap-text { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; color: #ff69b4; margin-top: 15px; } 
         .river { width: 100%; height: 80px; background: linear-gradient(to bottom, #81d4fa, #b3e5fc); }
 
         /* ЛЕПЕСТКИ И ПОДСКАЗКА ПРОКРУТКИ */
@@ -72,12 +75,13 @@
 
     <div class="section-three">
         <div class="quote">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
-        <div class="jap-text">あなたの愛は私の心に咲く春です</div> <div style="margin: 40px; font-size: 30px;">🌸</div>
+        <div class="jap-text">あなたの愛は私の心に咲く春です</div> 
+        <div style="margin: 40px; font-size: 30px;">🌸</div>
     </div>
     <div class="river"></div>
 
     <script>
-        // 1. Счетчик дней
+        // Счетчик дней
         const startDate = new Date('2024-08-02');
         function updateCounter() {
             const diff = Math.floor((new Date() - startDate) / 86400000);
@@ -85,7 +89,7 @@
         }
         updateCounter();
 
-        // 2. ИДЕАЛЬНОЕ СЕРДЦЕ НА CANVAS (без изменений)
+        // ИДЕАЛЬНОЕ СЕРДЦЕ НА CANVAS
         const canvas = document.getElementById('heart-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = 600; canvas.height = 600;
@@ -116,7 +120,7 @@
         }
         draw();
 
-        // 3. Лепестки
+        // Лепестки
         setInterval(() => {
             const p = document.createElement('div');
             p.className = 'petal'; p.innerHTML = '🌸';
