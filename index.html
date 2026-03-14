@@ -3,150 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для Милеши 🌸</title>
+    <title>Для моей Милешеньки ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background-color: #f0fafa; 
-            font-family: sans-serif; 
-            overflow-x: hidden; 
+        body { margin: 0; padding: 0; background-color: #ffffff; font-family: sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* ЭКРАН 1: ЦВЕТОК И ОБЛАЧКО */
+        .section-one {
+            height: 100vh; display: flex; justify-content: center; align-items: center;
+            position: relative; background: linear-gradient(to bottom, #eef9f9, #ffffff);
         }
-
-        /* ПЕРВЫЙ ЭКРАН */
-        .first-screen {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            background: linear-gradient(to bottom, #e0f2f1, #ffffff);
-        }
-
-        .flower-scene { position: relative; text-align: center; }
-
         .sakura-flower {
-            font-size: 280px; 
-            color: #ffb7c5; 
-            opacity: 0.8;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
-            animation: sway 6s ease-in-out infinite;
-            display: inline-block;
+            font-size: 280px; color: #ffb7c5; opacity: 0.6;
+            animation: sway 6s ease-in-out infinite; display: inline-block;
+        }
+        @keyframes sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+        
+        .cloud {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.96); padding: 35px 50px; 
+            border-radius: 80px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
+            text-align: center; border: 4px solid #fff; z-index: 10;
+        }
+        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1.3rem; white-space: nowrap; }
+        .cloud #counter { font-size: 3rem; font-weight: bold; color: #333; margin: 5px 0; }
+        .cloud p { color: #888; font-size: 1rem; margin: 0; }
+
+        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (CANVAS) */
+        .section-two { 
+            height: 100vh; background: #1a002b; 
+            display: flex; justify-content: center; align-items: center; position: relative;
+        }
+        #heart-canvas { max-width: 100%; height: auto; }
+
+        /* ЭКРАН 3: ЦИТАТЫ И ЦВЕТОК */
+        .section-three { padding: 80px 20px; text-align: center; background: #fff; }
+        .quote { font-family: 'Pacifico', cursive; font-size: 1.6rem; color: #555; max-width: 450px; margin: 0 auto; line-height: 1.5; }
+        .separator-flower {
+            font-size: 50px; margin: 30px 0; display: inline-block;
+            animation: slow-spin 10s linear infinite;
+        }
+        @keyframes slow-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .jap-text { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: #ff69b4; }
+
+        /* ЭКРАН 4: РЕЧКА */
+        .river { 
+            width: 100%; height: 120px; 
+            background: linear-gradient(to bottom, #81d4fa, #b3e5fc); 
+            position: relative; 
         }
 
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
+        /* ЛЕПЕСТКИ */
+        .petal {
+            position: fixed; top: -50px; z-index: 100; color: #ffb7c5;
+            pointer-events: none; animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(540deg); opacity: 0; }
         }
 
-        .counter-cloud {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%); 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 25px 40px;
-            border-radius: 50px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            width: 260px;
-            border: 3px solid #fff;
-            z-index: 10;
-        }
-
-        .counter-cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1rem; }
-        .counter-cloud #counter { font-size: 2rem; font-weight: bold; color: #333; margin: 5px 0; }
-        .counter-cloud p { color: #888; margin: 0; font-size: 0.8rem; }
-
-        /* ВТОРОЙ ЭКРАН: ЦИТАТА */
-        .quote-screen {
-            min-height: 60vh;
-            background: #fff;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .quote-text {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.4rem;
-            color: #555;
-            max-width: 320px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .divider { font-size: 1.8rem; margin: 20px 0; }
-
-        .japanese-text {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.1rem;
-            color: #ff69b4;
-            letter-spacing: 2px;
-        }
-
-        /* РЕЧКА ВНИЗУ */
-        .river {
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, #81d4fa, #29b6f6);
-            position: relative;
-            overflow: hidden;
-            opacity: 0.7;
-        }
-
-        .river::before {
-            content: "";
-            position: absolute;
-            width: 200%; height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/waves.png');
-            animation: wave 10s linear infinite;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
+        .scroll-hint { position: absolute; bottom: 30px; color: #ff69b4; font-size: 1rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body>
 
-    <div class="first-screen">
-        <div class="flower-scene">
-            <div class="sakura-flower">🌸</div>
-            <div class="counter-cloud">
-                <h2>для любимой милешеньки</h2>
-                <div id="counter">считаем...</div>
-                <p>мы вместе уже</p>
-            </div>
+    <div class="section-one">
+        <div class="sakura-flower">🌸</div>
+        <div class="cloud">
+            <h2>для любимой милешеньки</h2>
+            <div id="counter">...</div>
+            <p>мы вместе уже</p>
         </div>
+        <div class="scroll-hint">листай вниз ❤️</div>
     </div>
 
-    <div class="quote-screen">
-        <div class="quote-text">
-            «Твоя любовь — это весна, которая цветет в моем сердце каждый день»
-        </div>
-        
-        <div class="divider">🌸</div>
-        
-        <div class="japanese-text">
-            あなたの愛は私の心に咲く春です
-        </div>
-        <p style="color: #aaa; font-size: 0.7rem; margin-top: 50px;">листай вниз к реке</p>
+    <div class="section-two">
+        <canvas id="heart-canvas"></canvas>
+        <div class="scroll-hint" style="color: white;">чуть ниже...</div>
+    </div>
+
+    <div class="section-three">
+        <div class="quote">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
+        <div class="separator-flower">🌸</div>
+        <div class="jap-text">あなたの愛は私の心に咲く春です</div> 
     </div>
 
     <div class="river"></div>
 
     <script>
+        // 1. Счетчик
         const startDate = new Date('2024-08-02');
         function updateCounter() {
-            const today = new Date();
-            const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-            document.getElementById('counter').innerText = `${diffDays} дня!`;
+            const diff = Math.floor((new Date() - startDate) / 86400000);
+            document.getElementById('counter').innerText = `${diff} дня!`;
         }
         updateCounter();
-    </script>
 
+        // 2. Анимированное сердце "i love you"
+        const canvas = document.getElementById('heart-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 600; canvas.height = 600;
+
+        const words = "i love you  "; 
+        let offset = 0;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "bold 13px Arial";
+            ctx.fillStyle = "#FF69B4";
+
+            for (let layer = 0; layer < 3; layer++) {
+                const layerScale = 14 + (layer * 1.5);
+                ctx.globalAlpha = 1 - (layer * 0.3);
+
+                for (let i = 0; i < 100; i++) {
+                    const t = (i / 100) * Math.PI * 2 + offset;
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+
+                    const char = words[i % words.length];
+                    ctx.fillText(char, 300 + x * layerScale, 300 + y * layerScale);
+                }
+            }
+            offset -= 0.007; 
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+        // 3. Лепестки, падающие через весь сайт в речку
+        setInterval(() => {
+            const p = document.createElement('div');
+            p.className = 'petal';
+            p.innerHTML = '🌸';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = Math.random() * 10 + 15 + 'px';
+            p.style.animationDuration = Math.random() * 3 + 6 + 's';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 9000);
+        }, 500);
+    </script>
 </body>
 </html>
-
