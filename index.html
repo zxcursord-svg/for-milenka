@@ -3,86 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для Милеши 🌸</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+    <title>Для Милешеньки ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; background-color: #ffffff; font-family: sans-serif; overflow-x: hidden; }
-
-        /* ЭКРАН 1: ЦВЕТОК И СЧЕТЧИК */
+        body { margin: 0; padding: 0; background-color: #ffffff; font-family: sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* ЭКРАН 1: ЦВЕТОК (как на твоём скриншоте) */
         .section-one {
             height: 100vh; display: flex; justify-content: center; align-items: center;
             position: relative; background: linear-gradient(to bottom, #e0f2f1, #ffffff);
         }
         .sakura-flower {
-            font-size: 250px; color: #ffb7c5; opacity: 0.7;
+            font-size: 280px; color: #ffb7c5; opacity: 0.6;
             animation: sway 6s ease-in-out infinite; display: inline-block;
         }
         @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
         
         .cloud {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95); padding: 25px 35px; border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border: 3px solid #fff; z-index: 10;
+            background: rgba(255, 255, 255, 0.95); padding: 30px 45px; border-radius: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: center; border: 4px solid #fff; z-index: 10;
         }
-        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1rem; }
-        .cloud #counter { font-size: 2rem; font-weight: bold; color: #333; margin: 5px 0; }
+        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1.1rem; }
+        .cloud #counter { font-size: 2.5rem; font-weight: bold; color: #333; margin: 5px 0; }
+        .cloud p { color: #888; font-size: 0.9rem; margin: 0; }
 
-        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ ИЗ БУКВ */
-        .section-two {
-            height: 60vh; display: flex; justify-content: center; align-items: center;
-            position: relative; background: #fff; overflow: hidden;
+        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (из твоего кода) */
+        .section-two { 
+            height: 100vh; background: #1a002b; /* Глубокий темный фон для контраста */
+            display: flex; justify-content: center; align-items: center; position: relative;
         }
+        #heart-canvas { max-width: 100%; height: auto; }
 
-        .text-heart-container {
-            position: relative; width: 180px; height: 160px;
-            animation: heartPulse 0.8s ease-in-out infinite alternate;
-        }
+        /* ЭКРАН 3: ЦИТАТА И РЕЧКА */
+        .section-three { padding: 100px 20px; text-align: center; background: #fff; }
+        .quote { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: #555; max-width: 400px; margin: 0 auto; }
+        .river { width: 100%; height: 80px; background: linear-gradient(to bottom, #81d4fa, #b3e5fc); }
 
-        @keyframes heartPulse { to { transform: scale(1.1); } }
-
-        .text-heart-char {
-            position: absolute;
-            font-family: 'Pacifico', cursive; font-size: 22px; font-weight: bold;
-            color: #ff3860; text-transform: uppercase;
-            animation: path_heart 6s linear infinite; /* Скорость бега букв */
-            opacity: 0;
-        }
-
-        /* ТРАЕКТОРИЯ СЕРДЦА */
-        @keyframes path_heart {
-            0% { transform: translate(90px, 40px); opacity: 0; }
-            5% { transform: translate(90px, 40px); opacity: 1; }
-            15% { transform: translate(40px, 10px); opacity: 1; }
-            30% { transform: translate(0px, 50px); opacity: 1; }
-            50% { transform: translate(90px, 140px); opacity: 1; }
-            70% { transform: translate(180px, 50px); opacity: 1; }
-            85% { transform: translate(140px, 10px); opacity: 1; }
-            95% { transform: translate(90px, 40px); opacity: 1; }
-            100% { transform: translate(90px, 40px); opacity: 0; }
-        }
-
-        /* ЭКРАН 3: ЦИТАТА */
-        .section-three {
-            padding: 60px 20px; text-align: center; background: #ffffff;
-        }
-        .quote-text { font-family: 'Pacifico', cursive; font-size: 1.3rem; color: #555; line-height: 1.5; }
-        .jap-text { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; color: #ff69b4; margin-top: 20px; }
-
-        /* РЕЧКА */
-        .river {
-            width: 100%; height: 80px; 
-            background: linear-gradient(to bottom, #81d4fa, #b3e5fc);
-            position: relative; margin-top: 50px;
-        }
-
-        /* ЛЕПЕСТКИ ЧЕРЕЗ ВЕСЬ САЙТ */
-        .petal {
-            position: fixed; top: -50px; z-index: 100; color: #ffb7c5;
-            pointer-events: none; animation: fall linear forwards;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
+        /* ЛЕПЕСТКИ */
+        .petal { position: fixed; top: -50px; z-index: 100; color: #ffb7c5; pointer-events: none; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        
+        .scroll-hint { position: absolute; bottom: 30px; color: #ff69b4; font-size: 0.9rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body>
@@ -92,56 +55,72 @@
         <div class="cloud">
             <h2>для любимой милешеньки</h2>
             <div id="counter">...</div>
-            <p style="color:#888; font-size:0.8rem; margin:0;">мы вместе уже</p>
+            <p>мы вместе уже</p>
         </div>
+        <div class="scroll-hint">листай вниз ❤️</div>
     </div>
 
     <div class="section-two">
-        <div class="text-heart-container" id="heartContainer">
-            </div>
+        <canvas id="heart-canvas"></canvas>
+        <div class="scroll-hint" style="color: white;">ещё чуть-чуть...</div>
     </div>
 
     <div class="section-three">
-        <div class="quote-text">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
-        <div style="margin:20px; font-size: 20px;">🌸</div>
-        <div class="jap-text">あなたの愛は私の心に咲く春です</div>
+        <div class="quote">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
+        <div style="margin: 40px; font-size: 30px;">🌸</div>
     </div>
-
     <div class="river"></div>
 
     <script>
-        // Создаем бегущую строку "I LOVE YOU"
-        const text = "I LOVE YOU  I LOVE YOU  "; 
-        const container = document.getElementById('heartContainer');
-        const delay = 0.25; 
-
-        text.split('').forEach((char, index) => {
-            const charSpan = document.createElement('span');
-            charSpan.className = 'text-heart-char';
-            charSpan.innerText = char === ' ' ? '\u00A0' : char;
-            charSpan.style.animationDelay = (index * delay) + 's';
-            container.appendChild(charSpan);
-        });
-
-        // Счетчик
+        // 1. Счетчик дней
         const startDate = new Date('2024-08-02');
-        function update() {
+        function updateCounter() {
             const diff = Math.floor((new Date() - startDate) / 86400000);
-            document.getElementById('counter').innerText = diff + ' дня!';
+            document.getElementById('counter').innerText = `${diff} дня!`;
         }
-        update();
+        updateCounter();
 
-        // Лепестки сакуры
+        // 2. РИСУЕМ СЕРДЦЕ НА CANVAS (тот самый код)
+        const canvas = document.getElementById('heart-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 600; canvas.height = 600;
+
+        const words = "i love you  "; 
+        let offset = 0;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "bold 13px Arial";
+            ctx.fillStyle = "#FF69B4";
+
+            for (let layer = 0; layer < 3; layer++) {
+                const layerScale = 14 + (layer * 1.5);
+                ctx.globalAlpha = 1 - (layer * 0.3);
+
+                for (let i = 0; i < 100; i++) {
+                    const t = (i / 100) * Math.PI * 2 + offset;
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+
+                    const char = words[i % words.length];
+                    ctx.fillText(char, 300 + x * layerScale, 300 + y * layerScale);
+                }
+            }
+            offset -= 0.007; 
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+        // 3. Лепестки
         setInterval(() => {
             const p = document.createElement('div');
-            p.className = 'petal';
-            p.innerHTML = '🌸';
+            p.className = 'petal'; p.innerHTML = '🌸';
             p.style.left = Math.random() * 100 + 'vw';
             p.style.fontSize = Math.random() * 10 + 15 + 'px';
             p.style.animationDuration = Math.random() * 3 + 5 + 's';
             document.body.appendChild(p);
             setTimeout(() => p.remove(), 8000);
-        }, 400);
+        }, 450);
     </script>
 </body>
 </html>
