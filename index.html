@@ -3,98 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для моей Милешеньки ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Для Милеши 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; background-color: #fff0f5; font-family: sans-serif; color: #ff1493; overflow-x: hidden; scroll-behavior: smooth; }
-        .section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; text-align: center; }
+        body { margin: 0; padding: 0; background-color: #f0fafa; font-family: sans-serif; overflow-x: hidden; }
+
+        /* 1. ПЕРВЫЙ ЭКРАН С ЦВЕТКОМ */
+        .first-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(to bottom, #e0f2f1, #ffffff);
+        }
+        .sakura-flower {
+            font-size: 280px; color: #ffb7c5; opacity: 0.8;
+            animation: sway 6s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
         
-        .first-screen { background: #fff0f5; }
-        .counter-box { background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(255, 182, 193, 0.6); z-index: 10; border: 2px solid #ffb6c1; }
+        .counter-cloud {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95); padding: 25px 40px; border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 260px; border: 3px solid #fff; z-index: 10; text-align: center;
+        }
+        .counter-cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1rem; }
+        .counter-cloud #counter { font-size: 2rem; font-weight: bold; color: #333; margin: 5px 0; }
 
-        .second-screen { background: #1a002b; overflow: hidden; }
-        #heart-canvas { max-width: 100%; height: auto; }
+        /* 2. ЭКРАН С ТВОИМ СЕРДЦЕМ */
+        .heart-screen {
+            height: 60vh; display: flex; justify-content: center; align-items: center; background: #fff;
+        }
+        .heart {
+            position: relative; width: 100px; height: 90px; background-color: #ff3860;
+            transform: rotate(-45deg); animation: beat 0.8s infinite alternate;
+        }
+        .heart:before, .heart:after {
+            content: ""; position: absolute; width: 100px; height: 100px;
+            background-color: #ff3860; border-radius: 50%;
+        }
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { top: 0; left: 50px; }
+        @keyframes beat { to { transform: scale(1.1) rotate(-45deg); } }
+        
+        .heart-text {
+            position: absolute; width: 200px; text-align: center;
+            transform: rotate(45deg); top: 20px; left: -50px;
+            font-family: 'Pacifico', cursive; color: white; font-size: 14px;
+        }
 
-        .third-screen { background: #9400D3; padding: 40px 20px; box-sizing: border-box; }
-        .congratulations { font-family: 'Pacifico', cursive; font-size: 2rem; color: #FFB6C1; line-height: 1.4; max-width: 800px; z-index: 10; }
+        /* 3. ЭКРАН С ЦИТАТОЙ */
+        .quote-screen { padding: 80px 20px; text-align: center; background: #fff; }
+        .quote-text { font-family: 'Pacifico', cursive; font-size: 1.3rem; color: #555; margin-bottom: 20px; }
+        .japanese-text { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; color: #ff69b4; }
 
-        .heart-particle { position: fixed; color: #ffb6c1; pointer-events: none; animation: fall linear infinite; z-index: 1; }
-        @keyframes fall { to { transform: translateY(110vh); } }
-        .scroll-hint { position: absolute; bottom: 30px; font-size: 1rem; color: #ff1493; animation: bounce 2s infinite; z-index: 10; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
+        /* 4. РЕЧКА И ЛЕПЕСТКИ */
+        .river { width: 100%; height: 80px; background: #81d4fa; opacity: 0.7; }
+        
+        .petal {
+            position: fixed; top: -50px; z-index: 99; color: #ffb7c5;
+            pointer-events: none; animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="section first-screen">
-        <div class="counter-box">
-            <h1>Для любимой Милешеньки</h1>
-            <div id="counter" style="font-size: 1.5rem; font-weight: bold;">Считаем дни...</div>
-        </div>
-        <div class="scroll-hint">Листай вниз ❤️</div>
-    </div>
-
-    <div class="section second-screen">
-        <canvas id="heart-canvas"></canvas>
-        <div class="scroll-hint" style="color: white;">Ниже еще кое-что...</div>
-    </div>
-
-    <div class="section third-screen">
-        <div class="congratulations">
-            с 8 марта, моё солнышко! ❤️<br><br>
-            ты — самое лучшее, что есть в моей жизни. <br>
-            люблю тебя бесконечно!
+    <div class="first-screen">
+        <div class="flower-scene">
+            <div class="sakura-flower">🌸</div>
+            <div class="counter-cloud">
+                <h2>для любимой милешеньки</h2>
+                <div id="counter">...</div>
+                <p style="color:#888; font-size:0.8rem; margin:0;">мы вместе уже</p>
+            </div>
         </div>
     </div>
+
+    <div class="heart-screen">
+        <div class="heart">
+            <div class="heart-text"><marquee scrollamount="5">I LOVE YOU MILENA</marquee></div>
+        </div>
+    </div>
+
+    <div class="quote-screen">
+        <div class="quote-text">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
+        <div style="margin:15px">🌸</div>
+        <div class="japanese-text">あなたの愛は私の心に咲く春です</div>
+    </div>
+
+    <div class="river"></div>
 
     <script>
-        const startDate = new Date('2024-08-02'); 
-        function updateCounter() {
-            const diff = new Date() - startDate;
-            const days = Math.floor(diff / 86400000);
-            document.getElementById('counter').innerText = `Мы вместе уже ${days} дней!`;
-        }
-        updateCounter(); setInterval(updateCounter, 1000);
-
+        // Счетчик
+        const startDate = new Date('2024-08-02');
         setInterval(() => {
-            const h = document.createElement('div');
-            h.className = 'heart-particle'; h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw'; h.style.top = '-20px';
-            h.style.fontSize = Math.random() * 20 + 10 + 'px';
-            h.style.animationDuration = Math.random() * 3 + 5 + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 7000);
+            const diffDays = Math.floor((new Date() - startDate) / 86400000);
+            document.getElementById('counter').innerText = diffDays + ' дня!';
+        }, 1000);
+
+        // Лепестки
+        setInterval(() => {
+            const p = document.createElement('div');
+            p.className = 'petal';
+            p.innerHTML = '🌸';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = Math.random() * 15 + 10 + 'px';
+            p.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 7000);
         }, 400);
-
-        const canvas = document.getElementById('heart-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 600; canvas.height = 600;
-
-        const words = "i love you  "; // Все буквы маленькие
-        let offset = 0;
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.font = "bold 13px Arial";
-            ctx.fillStyle = "#FF69B4";
-
-            for (let layer = 0; layer < 3; layer++) {
-                const layerScale = 14 + (layer * 1.5);
-                ctx.globalAlpha = 1 - (layer * 0.3);
-
-                for (let i = 0; i < 100; i++) {
-                    const t = (i / 100) * Math.PI * 2 + offset;
-                    const x = 16 * Math.pow(Math.sin(t), 3);
-                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-
-                    const char = words[i % words.length];
-                    ctx.fillText(char, 300 + x * layerScale, 300 + y * layerScale);
-                }
-            }
-            offset -= 0.007; 
-            requestAnimationFrame(draw);
-        }
-        draw();
     </script>
 </body>
 </html>
