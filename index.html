@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Для Милешеньки ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; padding: 0; background-color: #ffffff; font-family: sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* ЭКРАН 1: ЦВЕТОК (как на твоём скриншоте) */
+        /* ЭКРАН 1: ЦВЕТОК И ОВАЛЬНОЕ ОБЛАКО */
         .section-one {
             height: 100vh; display: flex; justify-content: center; align-items: center;
             position: relative; background: linear-gradient(to bottom, #e0f2f1, #ffffff);
@@ -21,30 +21,35 @@
         
         .cloud {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95); padding: 30px 45px; border-radius: 60px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: center; border: 4px solid #fff; z-index: 10;
+            background: rgba(255, 255, 255, 0.95); 
+            width: 320px; /* Жестко задаем ширину */
+            padding: 40px 10px; 
+            border-radius: 50%; /* Делает идеальный горизонтальный овал */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; 
+            border: 4px solid #fff; z-index: 10;
         }
-        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1.1rem; }
-        .cloud #counter { font-size: 2.5rem; font-weight: bold; color: #333; margin: 5px 0; }
+        .cloud h2 { font-family: 'Pacifico', cursive; color: #ff69b4; margin: 0; font-size: 1.2rem; white-space: nowrap; }
+        .cloud #counter { font-size: 2.8rem; font-weight: bold; color: #333; margin: 5px 0; }
         .cloud p { color: #888; font-size: 0.9rem; margin: 0; }
 
-        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (из твоего кода) */
+        /* ЭКРАН 2: ТО САМОЕ СЕРДЦЕ (без изменений) */
         .section-two { 
-            height: 100vh; background: #1a002b; /* Глубокий темный фон для контраста */
+            height: 100vh; background: #1a002b; 
             display: flex; justify-content: center; align-items: center; position: relative;
         }
         #heart-canvas { max-width: 100%; height: auto; }
 
         /* ЭКРАН 3: ЦИТАТА И РЕЧКА */
         .section-three { padding: 100px 20px; text-align: center; background: #fff; }
-        .quote { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: #555; max-width: 400px; margin: 0 auto; }
+        .quote { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: #555; max-width: 400px; margin: 0 auto; line-height: 1.5; }
+        .jap-text { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; color: #ff69b4; margin-top: 15px; } /* Японский текст */
         .river { width: 100%; height: 80px; background: linear-gradient(to bottom, #81d4fa, #b3e5fc); }
 
-        /* ЛЕПЕСТКИ */
+        /* ЛЕПЕСТКИ И ПОДСКАЗКА ПРОКРУТКИ */
         .petal { position: fixed; top: -50px; z-index: 100; color: #ffb7c5; pointer-events: none; animation: fall linear forwards; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
         
-        .scroll-hint { position: absolute; bottom: 30px; color: #ff69b4; font-size: 0.9rem; animation: bounce 2s infinite; }
+        .scroll-hint { position: absolute; bottom: 30px; color: #ff69b4; font-family: sans-serif; font-size: 0.9rem; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
@@ -67,7 +72,7 @@
 
     <div class="section-three">
         <div class="quote">«Твоя любовь — это весна, которая цветет в моем сердце каждый день»</div>
-        <div style="margin: 40px; font-size: 30px;">🌸</div>
+        <div class="jap-text">あなたの愛は私の心に咲く春です</div> <div style="margin: 40px; font-size: 30px;">🌸</div>
     </div>
     <div class="river"></div>
 
@@ -80,7 +85,7 @@
         }
         updateCounter();
 
-        // 2. РИСУЕМ СЕРДЦЕ НА CANVAS (тот самый код)
+        // 2. ИДЕАЛЬНОЕ СЕРДЦЕ НА CANVAS (без изменений)
         const canvas = document.getElementById('heart-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = 600; canvas.height = 600;
